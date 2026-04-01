@@ -1,0 +1,96 @@
+:root {
+    --bg-color: #ffffff;
+    --sidebar-bg: #f7f9f9;
+    --card-bg: #ffffff;
+    --text-main: #0f1419;
+    --text-muted: #536471;
+    --border-color: #eff3f4;
+    --primary-color: #1DA1F2;
+    --danger-color: #f4212e;
+    --like-color: #e0245e;
+}
+[data-theme="dark"] {
+    --bg-color: #15202b; --sidebar-bg: #192734; --card-bg: #15202b;
+    --text-main: #ffffff; --text-muted: #8899a6; --border-color: #38444d;
+}
+[data-theme="thrash"] {
+    --bg-color: #000040; --sidebar-bg: #000030; --card-bg: #000040;
+    --text-main: #ccff00; --text-muted: #00ffff; --border-color: #ff0000;
+    --primary-color: #39ff14; --danger-color: #ff0000; --like-color: #ff00ff;
+    font-family: "Courier New", Courier, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background-color: var(--bg-color); color: var(--text-main); font-family: -apple-system, sans-serif; }
+
+/* Desktop Layout */
+#app-container { display: flex; max-width: 1200px; margin: 0 auto; min-height: 100vh; }
+.sidebar { width: 250px; border-right: 1px solid var(--border-color); padding: 20px; position: sticky; top: 0; height: 100vh; background-color: var(--sidebar-bg); z-index: 100;}
+.sidebar h1 { color: var(--primary-color); margin-bottom: 30px; font-size: 24px; font-weight: 900; letter-spacing: -1px; }
+.nav-item { padding: 15px; margin-bottom: 5px; cursor: pointer; border-radius: 30px; font-size: 18px; font-weight: bold; transition: 0.2s; }
+.nav-item:hover, .nav-item.active { background-color: rgba(29, 161, 242, 0.1); color: var(--primary-color); }
+
+.main-feed { flex: 1; border-right: 1px solid var(--border-color); padding-bottom: 100px; }
+.header { padding: 15px 20px; border-bottom: 1px solid var(--border-color); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 10; background-color: rgba(var(--bg-color), 0.9); font-weight: bold; font-size: 20px; }
+
+/* Cards & Forms */
+.inline-form-box { padding: 20px; border-bottom: 1px solid var(--border-color); background: rgba(0,0,0,0.02); }
+[data-theme="dark"] .inline-form-box, [data-theme="thrash"] .inline-form-box { background: rgba(255,255,255,0.02); }
+.inline-form-box h3 { margin-bottom: 15px; color: var(--primary-color); }
+
+.album-card { display: flex; padding: 15px 20px; border-bottom: 1px solid var(--border-color); transition: background-color 0.2s; }
+.album-card:hover { background-color: rgba(0,0,0,0.03); }
+[data-theme="dark"] .album-card:hover, [data-theme="thrash"] .album-card:hover { background-color: rgba(255,255,255,0.03); }
+
+.album-cover { width: 100px; height: 100px; border-radius: 8px; object-fit: cover; margin-right: 15px; background-color: var(--border-color); }
+.album-content { flex: 1; }
+.album-header { margin-bottom: 5px; font-size: 18px; font-weight: bold; }
+.album-meta { font-size: 14px; color: var(--text-muted); margin-bottom: 10px; }
+.album-links a { text-decoration: none; color: var(--primary-color); margin-right: 15px; font-weight: bold; font-size: 14px; }
+.tags-container { margin-top: 10px; }
+.tag { font-size: 13px; color: var(--primary-color); margin-right: 8px; cursor: pointer; transition: 0.2s; }
+.tag:hover { text-decoration: underline; color: var(--text-main); }
+
+.actions { display: flex; gap: 20px; margin-top: 15px; }
+.action-btn { background: none; border: none; color: var(--text-muted); cursor: pointer; display: flex; align-items: center; gap: 5px; font-size: 14px; transition: 0.2s; }
+.action-btn:hover { color: var(--primary-color); }
+.action-btn.liked { color: var(--like-color); }
+.action-btn.delete:hover { color: var(--danger-color); }
+
+/* Edit Inputs Mode */
+.edit-input { width: 100%; padding: 8px; margin-bottom: 5px; background: var(--bg-color); color: var(--text-main); border: 1px solid var(--border-color); border-radius: 4px; }
+
+/* Modals & Globals */
+.overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; z-index: 1000; }
+.overlay.hidden, .hidden { display: none !important; }
+.modal { background: var(--card-bg); padding: 30px; border-radius: 15px; width: 100%; max-width: 400px; border: 1px solid var(--border-color); }
+.form-group { margin-bottom: 15px; }
+.form-group label { display: block; margin-bottom: 5px; color: var(--text-muted); font-size: 14px; }
+.form-group input, .form-group select, .form-group textarea { width: 100%; padding: 10px; border-radius: 5px; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-main); outline: none; }
+
+.btn { padding: 10px 20px; border-radius: 20px; font-weight: bold; cursor: pointer; border: none; font-size: 14px; }
+.btn-primary { background: var(--primary-color); color: white; width: 100%; }
+.btn-secondary { background: transparent; border: 1px solid var(--border-color); color: var(--text-main); }
+.fab { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; border-radius: 50%; background: var(--primary-color); color: white; font-size: 28px; border: none; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 100; transition: transform 0.2s; }
+.fab:active { transform: scale(0.9); }
+
+/* =========================================
+   MOBILE RESPONSIVENESS (Bottom App Bar)
+   ========================================= */
+@media (max-width: 768px) {
+    #app-container { flex-direction: column; padding-bottom: 70px; }
+    .sidebar { 
+        position: fixed; bottom: 0; left: 0; width: 100%; height: 65px; 
+        display: flex; flex-direction: row; justify-content: space-around; align-items: center;
+        padding: 0; border-right: none; border-top: 1px solid var(--border-color); 
+    }
+    .sidebar .logo { display: none; }
+    .nav-item { flex: 1; padding: 10px 0; margin: 0; border-radius: 0; font-size: 12px; display: flex; flex-direction: column; text-align: center; }
+    .nav-item.active { background: transparent; border-top: 3px solid var(--primary-color); }
+    .main-feed { border-right: none; }
+    
+    .album-card { flex-direction: column; }
+    .album-cover { width: 100%; height: 250px; margin-bottom: 15px; }
+    
+    .fab { bottom: 85px; right: 20px; }
+}

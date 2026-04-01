@@ -1,0 +1,7 @@
+Flask
+waitress
+requests
+beautifulsoup4
+spotipy
+pylast
+toml
