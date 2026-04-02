@@ -37,7 +37,23 @@ def save_json(filepath, data):
     with open(filepath, 'w', encoding='utf-8') as f: json.dump(data, f, indent=4)
 
 def get_users():
-    return toml.load('users.toml')
+    #return toml.load('users.toml')
+    users_env = os.environ.get('USERS_JSON')
+    if users_env:
+        try:
+            return json.loads(users_env)
+        except Exception as e:
+            print(f"Error parseando USERS_JSON: {e}")
+    
+    # 2. Si no hay variable, buscamos el archivo (Local)
+    if os.path.exists(USERS_FILE):
+        try:
+            return toml.load(USERS_FILE)
+        except Exception as e:
+            print(f"Error leyendo users.toml: {e}")
+            
+    return {} # Si todo falla, devolvemos diccionario vacío
+
 
 @app.route('/')
 def index():
