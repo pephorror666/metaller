@@ -93,4 +93,16 @@ body { background-color: var(--bg-color); color: var(--text-main); font-family: 
     .album-cover { width: 100%; height: 250px; margin-bottom: 15px; }
     
     .fab { bottom: 85px; right: 20px; }
+    
+    /* 1. Permite que el header divida sus elementos en varias líneas y sobreescribe el estilo en línea */
+    .header[style] {
+        flex-wrap: wrap !important;
+        gap: 10px;
+    }
+    
+    /* 2. Hace que el desplegable ocupe todo el ancho para que sea muy fácil de pulsar con el dedo */
+    #sort-feed {
+        width: 100%;
+        padding: 8px !important; 
+    }
 }
