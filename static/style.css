@@ -31,44 +31,7 @@ body { background-color: var(--bg-color); color: var(--text-main); font-family: 
 .nav-item:hover, .nav-item.active { background-color: rgba(29, 161, 242, 0.1); color: var(--primary-color); }
 
 .main-feed { flex: 1; border-right: 1px solid var(--border-color); padding-bottom: 100px; }
-.header { 
-    padding: 12px 20px; 
-    border-bottom: 1px solid var(--border-color); 
-    position: sticky; 
-    top: 0; 
-    z-index: 10; 
-    background-color: var(--bg-color); /* Cambiado de rgba a color directo */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.header-title {
-    font-weight: bold;
-    font-size: 20px;
-}
-
-.sort-container {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.sort-container label {
-    font-size: 12px;
-    color: var(--text-muted);
-    text-transform: uppercase;
-}
-
-#sort-feed {
-    padding: 6px 10px;
-    border-radius: 8px;
-    background: var(--sidebar-bg);
-    color: var(--text-main);
-    border: 1px solid var(--border-color);
-    font-size: 14px;
-    cursor: pointer;
-}
+.header { padding: 15px 20px; border-bottom: 1px solid var(--border-color); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 10; background-color: rgba(var(--bg-color), 0.9); font-weight: bold; font-size: 20px; }
 
 /* Cards & Forms */
 .inline-form-box { padding: 20px; border-bottom: 1px solid var(--border-color); background: rgba(0,0,0,0.02); }
@@ -130,23 +93,4 @@ body { background-color: var(--bg-color); color: var(--text-main); font-family: 
     .album-cover { width: 100%; height: 250px; margin-bottom: 15px; }
     
     .fab { bottom: 85px; right: 20px; }
-
-    .header {
-        padding: 10px 15px;
-    }
-
-    .header-title {
-        font-size: 18px; /* Un poco más pequeño en móvil */
-    }
-
-    /* Aseguramos que el sort no se esconda y tenga buen tamaño para pulsar */
-    .sort-container {
-        gap: 4px;
-    }
-
-    #sort-feed {
-        font-size: 13px;
-        padding: 5px;
-        max-width: 120px; /* Evita que empuje el título fuera de pantalla */
-    }
 }

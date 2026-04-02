@@ -31,18 +31,15 @@
 
         <main class="main-feed">
             <div id="view-feed" class="view-section">
-                <div class="header main-header">
-                <span class="header-title">Main Feed</span>
-                    <div class="sort-container">
-                        <label for="sort-feed">Sort:</label>
-                        <select id="sort-feed" onchange="setSort(this.value)">
-                            <option value="default">Timeline</option>
-                            <option value="year_desc">Newest Years</option>
-                            <option value="year_asc">Oldest Years</option>
-                            <option value="likes">Most Liked</option>
-                            <option value="random">🎲 Random</option>
-                        </select>
-                    </div>
+                <div class="header" style="display:flex; justify-content:space-between; align-items:center;">
+                    <span>Main Feed</span>
+                    <select id="sort-feed" onchange="setSort(this.value)" style="padding:5px; border-radius:5px; background:var(--bg-color); color:var(--text-main); border:1px solid var(--border-color); font-size:14px;">
+                        <option value="default">Timeline</option>
+                        <option value="year_desc">Newest Years</option>
+                        <option value="year_asc">Oldest Years</option>
+                        <option value="likes">Most Liked</option>
+                        <option value="random">🎲 Random Shuffle</option>
+                    </select>
                 </div>
                 
                 <div id="active-tag-banner" class="hidden" style="background:var(--primary-color); color:#000; padding:10px; font-weight:bold; display:flex; justify-content:space-between;">
